@@ -1,3 +1,12 @@
+@php
+
+    if (session()->has('isOwner')) {
+        echo 'Hello';
+    }
+
+@endphp
+
+
 @extends('layout')
 
 @section('content')
@@ -53,18 +62,22 @@
                 </div>
             </div>
         </x-card>
-        <x-card class="mt-4 p-2 flex space-x-6">
-            <a href="/listing/{{ $listing->id }}/edit">
-                <i class="fa-solid fa-pencil"></i>
-                Edit
-            </a>
-            <form method="POST" action="/listings/{{ $listing->id }}" enctype="multipart/form-data">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="text-red-500">
-                    <i class="fa-solid fa-trash"></i> DELETE
-                </button>
-            </form>
-        </x-card>
+
+        @if ($isOwner == 1)
+            <x-card class="mt-4 p-2 flex space-x-6">
+                <a href="/listing/{{ $listing->id }}/edit">
+                    <i class="fa-solid fa-pencil"></i>
+                    Edit
+                </a>
+                <form method="POST" action="/listings/{{ $listing->id }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="text-red-500">
+                        <i class="fa-solid fa-trash"></i> DELETE
+                    </button>
+                </form>
+            </x-card>
+        @endif
+
     </div>
 @endsection

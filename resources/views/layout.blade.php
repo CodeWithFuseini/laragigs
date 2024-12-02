@@ -34,7 +34,7 @@
                     <span class="font-bold uppercase">{{ auth()->user()->name }}</span>
                 </li>
                 <li>
-                    <a href="/user/login" class="hover:text-laravel"><i class="fa-solid fa-gear"></i>
+                    <a href="/listings/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i>
                         Manage Listings</a>
                 </li>
 

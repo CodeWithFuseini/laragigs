@@ -12,11 +12,19 @@ class UserController extends Controller
 {
     public function registerView()
     {
+        if (Auth::check()) {
+            return redirect("/");
+        }
+
         return view("users.register");
     }
 
     public function loginView()
     {
+        if (Auth::check()) {
+            return redirect("/");
+        }
+
         return view("users.login");
     }
 
